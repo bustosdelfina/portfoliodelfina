@@ -1,0 +1,254 @@
+/* ==========================================================
+   PALETA DE COLORES
+   Acá guardamos los colores en "variables". Si querés cambiar
+   un color en toda la página, lo cambiás SOLO acá.
+   ========================================================== */
+:root {
+  --crema: #FFF7E6;      /* Vanilla Cream: fondo general */
+  --rosa: #F7C8D3;       /* Blush Petal: portada y detalles suaves */
+  --rosa-oscuro: #B46A72;/* Rosewood: acentos (fechas, bordes, hover) */
+  --salvia: #A8B58A;     /* Sage Leaf: etiquetas de habilidades */
+  --cielo: #A9B7C6;      /* Misty Sky: fondo de secciones alternas */
+  --noche: #2D3A47;      /* Midnight Lagoon: textos y menú */
+}
+
+/* ==========================================================
+   REGLAS GENERALES
+   ========================================================== */
+* {
+  box-sizing: border-box; /* Hace que el padding no agrande las cajas (evita sorpresas con los anchos) */
+  margin: 0;              /* Saca los márgenes que el navegador pone por defecto */
+  padding: 0;             /* Saca los espacios internos por defecto */
+}
+
+html {
+  scroll-behavior: smooth; /* Al tocar el menú, la página se desliza suave hasta la sección */
+}
+
+body {
+  font-family: Georgia, "Times New Roman", serif; /* Tipografía de todo el texto (elegante, ideal para traducción/literatura) */
+  background-color: var(--crema); /* Fondo crema */
+  color: var(--noche);            /* Color del texto */
+  line-height: 1.7;               /* Espacio entre renglones, para que se lea cómodo */
+  font-size: 1.05rem;             /* Tamaño base del texto */
+}
+
+/* Caja que centra el contenido y evita que se estire demasiado en pantallas grandes */
+.contenedor {
+  width: 90%;          /* Ocupa el 90% del ancho de la pantalla (deja aire a los costados en celu) */
+  max-width: 1000px;   /* Pero nunca más de 1000px */
+  margin: 0 auto;      /* auto a los lados = centrada */
+}
+
+/* ==========================================================
+   PORTADA
+   ========================================================== */
+#portada {
+  background-color: var(--rosa);          /* Fondo rosa suave */
+  padding: 90px 0 70px;                   /* Espacio arriba y abajo (derecha/izquierda 0) */
+  border-bottom: 6px solid var(--rosa-oscuro); /* Línea decorativa abajo */
+}
+
+.portada-saludo {
+  font-size: 1.2rem;         /* Un poco más grande que el texto normal */
+  color: var(--rosa-oscuro); /* Color de acento */
+  font-style: italic;        /* Cursiva */
+}
+
+h1 {
+  font-size: 3.2rem;   /* Tamaño grande para el nombre */
+  line-height: 1.15;   /* Renglones más juntos para títulos grandes */
+  margin: 8px 0 16px;  /* Espacio arriba, a los lados y abajo */
+}
+
+.portada-rol {
+  font-size: 1.3rem;   /* Tamaño de tu presentación */
+  max-width: 600px;    /* Evita renglones demasiado largos */
+}
+
+/* ==========================================================
+   MENÚ
+   ========================================================== */
+#menu {
+  background-color: var(--noche); /* Barra oscura */
+  position: sticky;               /* Se queda pegada arriba mientras bajás por la página */
+  top: 0;                         /* Se pega al borde superior */
+  z-index: 10;                    /* Se muestra por encima del resto del contenido */
+}
+
+.menu-lista {
+  list-style: none;      /* Saca los puntitos de la lista */
+  display: flex;         /* FLEXBOX: pone los enlaces en una fila */
+  flex-wrap: wrap;       /* Si no entran, pasan a otra línea (clave para celulares) */
+  justify-content: center; /* Los centra horizontalmente */
+  gap: 8px 28px;         /* Separación: 8px vertical, 28px horizontal */
+  padding: 14px 0;       /* Espacio arriba y abajo dentro de la barra */
+}
+
+.menu-lista a {
+  color: var(--crema);     /* Color del enlace */
+  text-decoration: none;   /* Saca el subrayado */
+}
+
+.menu-lista a:hover {
+  color: var(--rosa);      /* Al pasar el mouse, cambia de color */
+}
+
+/* ==========================================================
+   SECCIONES (reglas que comparten todas)
+   ========================================================== */
+.seccion {
+  padding: 70px 0; /* Espacio arriba y abajo de cada sección */
+}
+
+.seccion-alt {
+  background-color: var(--cielo); /* Fondo azul grisáceo para alternar secciones */
+}
+
+h2 {
+  font-size: 2rem;                          /* Tamaño de los títulos de sección */
+  margin-bottom: 28px;                      /* Espacio debajo del título */
+  padding-bottom: 8px;                      /* Espacio entre el texto y la línea */
+  border-bottom: 3px solid var(--rosa-oscuro); /* Línea decorativa bajo el título */
+  display: inline-block;                    /* Hace que la línea mida lo mismo que el texto */
+}
+
+h3 {
+  font-size: 1.25rem; /* Tamaño de subtítulos */
+  margin-bottom: 8px; /* Espacio debajo */
+}
+
+/* ==========================================================
+   PERFIL
+   ========================================================== */
+.perfil-caja {
+  display: flex;      /* FLEXBOX: texto y datos personales lado a lado */
+  gap: 32px;          /* Separación entre ambos */
+  align-items: flex-start; /* Alineados arriba */
+}
+
+.perfil-texto {
+  flex: 2;            /* Ocupa el doble de espacio que la tarjeta de datos */
+}
+
+.datos-personales {
+  flex: 1;            /* Ocupa la mitad que el texto */
+  background-color: var(--rosa);                 /* Fondo rosa */
+  border-left: 5px solid var(--rosa-oscuro);     /* Borde a la izquierda */
+  padding: 22px;      /* Espacio interno */
+  border-radius: 8px; /* Esquinas redondeadas */
+}
+
+.datos-personales p {
+  margin-bottom: 6px; /* Separación entre cada dato */
+}
+
+/* ==========================================================
+   TARJETAS (estudios y experiencia)
+   ========================================================== */
+.lista-tarjetas {
+  display: flex;      /* FLEXBOX: tarjetas una al lado de otra */
+  flex-wrap: wrap;    /* Si no entran, bajan a la línea siguiente */
+  gap: 24px;          /* Separación entre tarjetas */
+}
+
+.tarjeta {
+  flex: 1 1 300px;    /* Crece (1), se achica (1) y mide mínimo 300px antes de bajar de línea */
+  background-color: var(--crema);             /* Fondo crema */
+  border-top: 5px solid var(--rosa-oscuro);   /* Borde superior de color */
+  padding: 24px;      /* Espacio interno */
+  border-radius: 8px; /* Esquinas redondeadas */
+}
+
+.tarjeta-fecha {
+  color: var(--rosa-oscuro); /* Fecha en color de acento */
+  font-weight: bold;         /* Negrita */
+  font-size: 0.95rem;        /* Un poco más chica */
+}
+
+.tarjeta-detalle {
+  margin-top: 8px;    /* Separación sobre la lista */
+  padding-left: 20px; /* Sangría para que se vean los puntitos */
+}
+
+/* ==========================================================
+   HABILIDADES
+   ========================================================== */
+.habilidades-lista {
+  list-style: none;   /* Saca los puntitos */
+  display: flex;      /* FLEXBOX: etiquetas en fila */
+  flex-wrap: wrap;    /* Pasan a la línea siguiente si no entran */
+  gap: 14px;          /* Separación entre etiquetas */
+}
+
+.habilidades-lista li {
+  background-color: var(--salvia);  /* Fondo verde salvia */
+  padding: 10px 22px;               /* Espacio interno: 10px vertical, 22px horizontal */
+  border-radius: 30px;              /* Bordes muy redondeados (forma de píldora) */
+  font-weight: bold;                /* Negrita */
+}
+
+/* ==========================================================
+   CONTACTO (pie de página)
+   ========================================================== */
+#contacto {
+  background-color: var(--noche); /* Fondo oscuro */
+  color: var(--crema);            /* Texto claro */
+  padding: 60px 0 30px;           /* Espacio arriba y abajo */
+}
+
+#contacto h2 {
+  border-bottom-color: var(--rosa); /* Línea del título en rosa para que se vea sobre fondo oscuro */
+}
+
+.contacto-datos {
+  display: flex;      /* FLEXBOX: email y teléfono en fila */
+  flex-wrap: wrap;    /* Bajan de línea en pantallas chicas */
+  gap: 12px 40px;     /* Separación vertical y horizontal */
+  margin-top: 12px;   /* Espacio sobre los datos */
+}
+
+.contacto-datos a {
+  color: var(--rosa);     /* Color de los enlaces */
+  font-size: 1.15rem;     /* Un poco más grandes */
+}
+
+.contacto-datos a:hover {
+  color: var(--crema);    /* Cambian de color al pasar el mouse */
+}
+
+.copy {
+  margin-top: 40px;       /* Separación respecto a los datos */
+  font-size: 0.9rem;      /* Texto chico */
+  color: var(--cielo);    /* Color suave */
+}
+
+/* ==========================================================
+   RESPONSIVE: ajustes para pantallas chicas (celulares)
+   Estas reglas SOLO se aplican si la pantalla mide 700px o menos
+   ========================================================== */
+@media (max-width: 700px) {
+  h1 {
+    font-size: 2.3rem;     /* Nombre más chico para que entre en el celu */
+  }
+
+  .portada-rol {
+    font-size: 1.1rem;     /* Presentación más chica */
+  }
+
+  #portada {
+    padding: 60px 0 45px;  /* Menos espacio en la portada */
+  }
+
+  .seccion {
+    padding: 50px 0;       /* Menos espacio entre secciones */
+  }
+
+  .perfil-caja {
+    flex-direction: column; /* Texto y datos pasan a estar uno debajo del otro */
+  }
+
+  .datos-personales {
+    width: 100%;            /* La tarjeta ocupa todo el ancho */
+  }
+}
